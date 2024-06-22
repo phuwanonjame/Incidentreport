@@ -138,35 +138,32 @@ export default function New() {
                 </select>
               </div>
             </div>
-           
           </div>
           <div className="flex flex-col items-center text-sm w-full">
             <div className="w-full flex p-5 items-center gap-3">
-                <div className="w-32">
+              <div className="w-32">
                 <span>Summary:</span>
-                </div>
-                
-                <input
-                  className="w-full rounded-md bg-white border-gray-300 border p-1 outline-none"
-                  type="text"
-                  name=""
-                  id=""
-                />
+              </div>
+
+              <input
+                className="w-full rounded-md bg-white border-gray-300 border p-1 outline-none"
+                type="text"
+                name=""
+                id=""
+              />
             </div>
             <div className="w-full flex p-5  gap-3">
-                <div className="w-32">
+              <div className="w-32">
                 <span>* Symptom :</span>
-                </div>
-                
-                <textarea
-                  className="w-full h-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
-               
-                  name=""
-                  id=""
-                />
+              </div>
+
+              <textarea
+                className="w-full h-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
+                name=""
+                id=""
+              />
             </div>
-                
-            </div>
+          </div>
         </div>
       </div>
     </div>
