@@ -144,12 +144,9 @@ export default function New() {
               <div className="w-32">
                 <span>Summary:</span>
               </div>
-
               <input
                 className="w-full rounded-md bg-white border-gray-300 border p-1 outline-none"
                 type="text"
-                name=""
-                id=""
               />
             </div>
             <div className="w-full flex p-5  gap-3">
