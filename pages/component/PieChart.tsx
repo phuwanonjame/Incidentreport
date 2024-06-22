@@ -20,6 +20,9 @@ interface PieChartProps {
 }
 
 export default function PieChart({ data }: PieChartProps) {
+  if (!data) {
+    return null; 
+  }
   // Aggregate values for incidents with the same name
   const aggregatedData = data.reduce((acc, incident) => {
     const existingIncident = acc.find(item => item.name === incident.name);

@@ -21,7 +21,7 @@ interface LineChartProps {
 
 export default function LineChart({ data }: LineChartProps) {
   if (!data) {
-    return null; // หรือแสดงข้อความข้อผิดพลาดอื่น ๆ ตามที่คุณต้องการ
+    return null; 
   }
 
   const chartData = {
