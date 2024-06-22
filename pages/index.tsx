@@ -1,118 +1,97 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import Navbar from "./component/Navbar";
+import styles from './yourStyles.module.css';
+import PieChart from "./component/PieChart";
+import LineChart from "./component/Linechart";
+import { lineChartData, pieChartData, incidents as recentIncidents } from './incidentsData'
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className=" ">
+      <div className="">
+        <div>
+          <h4 className="text-2xl font-bold  ">Dashboard</h4>
+        </div>
+        <div className=" bg-slate-100  max-md:overflow-hidden max-md:max-h-full max-h-[800px] overflow-auto p-5 mt-5 max-md:mt-0 rounded-md ">
+          <div className="">
+            <h1 className="text-red-500 text-2xl font-bold p-2"> Incident Overview</h1>
+          </div>
+          <div className="flex flex-row justify-center max-md:grid max-md:grid-cols-2   items-center gap-5">
+            <div className=" bg-white max-md:w-full text-center w-72 h-32 border-b-4 flex  border-red-500 rounded-md shadow-md">
+              <div className="p-5 w-full">
+                <span className=" text-gray-500 max-md:text-[12px]  ">Total Incidents:</span>
+                <div className="flex justify-center">
+                  <h1 className="text-5xl">{recentIncidents.length}</h1>
+                </div>
+              </div>
+            </div>
+            <div className=" bg-white max-md:w-fit w-72 h-32 border-b-4 border-blue-500 rounded-md shadow-md">
+              <div className="p-5">
+                <span className=" text-gray-500 max-md:text-[12px]  ">Unresolved Incidents:</span>
+                <div className="flex justify-center">
+                  <h1 className="text-5xl">{recentIncidents.filter(incident => incident.status === 'Unresolved').length}</h1>
+                </div>
+              </div>
+            </div>
+            <div className=" bg-white max-md:w-fit w-72 h-32 border-b-4 border-green-500 rounded-md shadow-md">
+              <div className="p-5">
+                <span className=" text-gray-500 max-md:text-[12px] ">Incidents In Progress:</span>
+                <div className="flex justify-center">
+                  <h1 className="text-5xl">{recentIncidents.filter(incident => incident.status === 'In Progress').length}</h1>
+                </div>
+              </div>
+            </div>
+            <div className=" bg-white max-md:w-full max-md:text-center w-72 h-32 border-b-4 border-orange-500 rounded-md shadow-md">
+              <div className="p-5">
+                <span className=" text-gray-500  max-md:text-[12px] ">Resolved Incidents:</span>
+                <div className="flex justify-center">
+                  <h1 className="text-5xl">{recentIncidents.filter(incident => incident.status === 'Resolved').length}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-evenly max-md:grid  max-md:max-h-full  max-h-[500px] mt-5 max-md:gap-2 gap-9">
+            <div className="line-chart max-md:w-[90vw] w-1/2 p-2 rounded-md shadow-md bg-white">
+              <h2 className="text-xl bg-blue-700 rounded-md text-white p-2">Incidents Over Time</h2>
+              <LineChart data={lineChartData} />
+            </div>
+            <div className="w-[420px] max-md:w-screen">
+              <div className="pie-chart max-md:w-[90vw]   p-2 rounded-md shadow-md bg-white">
+                <h2 className="text-xl bg-blue-700 rounded-md text-white p-2">Incident Types</h2>
+                <PieChart data={pieChartData} />
+              </div>
+            </div>
+          </div>
+          <div className="recent-incidents max-md:w-[90vw] mt-5 max-md:p-0 p-5 bg-white rounded-md shadow-md">
+            <h2 className="text-xl  mb-4 bg-blue-700 rounded-md  text-white p-2  ">Recent Incidents</h2>
+            <table className="min-w-full max-md:text-[10px]  bg-white">
+              <thead>
+                <tr>
+                  <th className="py-2 px-4 max-md:py-0 max-md:px-0 border-b">Incident ID</th>
+                  <th className="py-2 px-4 max-md:py-0 max-md:px-0 border-b">Name</th>
+                  <th className="py-2 px-4 max-md:py-0 max-md:px-0 border-b">Status</th>
+                  <th className="py-2 px-4 max-md:py-0 max-md:px-0 border-b">Created At</th>
+                  <th className="py-2 px-4 max-md:py-0 max-md:px-0 border-b">Assignee</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recentIncidents.map((incident) => (
+                  <tr key={incident.id} className="text-center">
+                    <td className="py-2 px-4 max-md:py-0 max-md:px-0 border-b">{incident.id}</td>
+                    <td className="py-2 px-4 max-md:py-0 max-md:px-0 border-b">{incident.name}</td>
+                    <td className="py-2 px-4 max-md:py-0 max-md:px-0 border-b">{incident.status}</td>
+                    <td className="py-2 px-4 max-md:py-0 max-md:px-0 border-b">{incident.created_at}</td>
+                    <td className="py-2 px-4 max-md:py-0 max-md:px-0 border-b">{incident.assignee}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }
