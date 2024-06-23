@@ -1,38 +1,48 @@
-export default function New() {
+import React from "react";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { blue } from "@mui/material/colors";
+interface NewProps {
+  openInc: boolean;
+  setOpenInc: (value: boolean) => void;
+}
+
+const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
   return (
-    <div className=" absolute w-full h-[850px] max-h-[850px] ">
-      <div className="w-full h-full bg-slate-50 ">
+    <div className="max-md:flex max-md:w-full max-md:h-full absolute w-full h-[850px] max-h-[850px]">
+   
+      <div className="w-full h-full bg-slate-50">
+      <div className="  flex w-10 justify-center items-center rounded-md   p-1 cursor-pointer " onClick={() => setOpenInc(false)}>
+        <ArrowBackIosIcon style={{textAlign:"center",display:"flex",justifyContent:"center", alignItems:"center", color:"blue",}}/>
+    </div>
         <div className="p-2">
           <span>New-Incident: INC0001</span>
         </div>
-        <div className="p-2">
-          <div className="flex justify-around gap-6 text-sm">
+        <div className="p-2 max-md:p-4">
+          <div className="flex max-md:flex-col justify-around gap-6 text-sm">
             <div className="">
-              <div className=" flex items-center gap-4">
+              <div className="flex items-center gap-4">
                 <div className="w-32">
                   <span>INC-ID:</span>
                 </div>
-
                 <div>
                   <input
-                    className=" w-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
+                    className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
                     type="text"
                   ></input>
                 </div>
               </div>
-
-              <div className=" flex items-center mt-2 gap-4">
+              <div className="flex items-center mt-2 gap-4">
                 <div className="w-32">
                   <span>Caller:</span>
                 </div>
                 <div>
                   <input
-                    className=" w-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
+                    className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
                     type="text"
                   ></input>
                 </div>
               </div>
-              <div className=" flex items-center mt-2 gap-4">
+              <div className="flex items-center mt-2 gap-4">
                 <div className="w-32">
                   <span>User-ID:</span>
                 </div>
@@ -41,32 +51,30 @@ export default function New() {
                   type="text"
                 ></input>
               </div>
-              <div className=" flex items-center mt-2 gap-4">
+              <div className="flex items-center mt-2 gap-4">
                 <div className="w-32">
                   <span>Category:</span>
                 </div>
                 <select className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none">
                   <option value=""></option>
-
                   <option value="">Software</option>
-                  <option value="">Headware</option>
+                  <option value="">Hardware</option>
                   <option value="">IP-Phone</option>
                 </select>
               </div>
-              <div className=" flex items-center mt-2 gap-4">
+              <div className="flex items-center mt-2 gap-4">
                 <div className="w-32">
                   <span>Location:</span>
                 </div>
                 <select className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none">
                   <option value=""></option>
-
                   <option value="">สำนักงานใหญ่</option>
                   <option value="">สาขา</option>
                 </select>
               </div>
             </div>
-            <div className=" ">
-              <div className=" flex items-center  gap-4">
+            <div className="">
+              <div className="flex items-center gap-4">
                 <div className="w-32">
                   <span>Opened:</span>
                 </div>
@@ -77,7 +85,7 @@ export default function New() {
                   id=""
                 />
               </div>
-              <div className=" flex items-center mt-2  gap-4">
+              <div className="flex items-center mt-2 gap-4">
                 <div className="w-32">
                   <span>Opened By:</span>
                 </div>
@@ -88,9 +96,9 @@ export default function New() {
                   id=""
                 />
               </div>
-              <div className=" flex items-center mt-2  gap-4">
+              <div className="flex items-center mt-2 gap-4">
                 <div className="w-32">
-                  <span>Contect Number:</span>
+                  <span>Contact Number:</span>
                 </div>
                 <input
                   className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
@@ -99,9 +107,9 @@ export default function New() {
                   id=""
                 />
               </div>
-              <div className=" flex items-center mt-2  gap-4">
+              <div className="flex items-center mt-2 gap-4">
                 <div className="w-32">
-                  <span>Incident State </span>
+                  <span>Incident State:</span>
                 </div>
                 <select className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none">
                   <option value=""></option>
@@ -112,9 +120,9 @@ export default function New() {
                   <option value="">Close</option>
                 </select>
               </div>
-              <div className=" flex items-center mt-2  gap-4">
-                <div className="w-32 ">
-                  <span>Assignment Group: </span>
+              <div className="flex items-center mt-2 gap-4">
+                <div className="w-32">
+                  <span>Assignment Group:</span>
                 </div>
                 <select className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none">
                   <option value=""></option>
@@ -125,13 +133,13 @@ export default function New() {
                   <option value="">Close</option>
                 </select>
               </div>
-              <div className=" flex items-center mt-2  gap-4">
-                <div className="w-32 ">
-                  <span>Assigned to: </span>
+              <div className="flex items-center mt-2 gap-4">
+                <div className="w-32">
+                  <span>Assigned to:</span>
                 </div>
                 <select className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none">
                   <option value=""></option>
-                  <option value="">itsupprt01</option>
+                  <option value="">itsupport01</option>
                   <option value="">itsupport30</option>
                   <option value="">itsupport26</option>
                   <option value="">itsupport03</option>
@@ -149,11 +157,10 @@ export default function New() {
                 type="text"
               />
             </div>
-            <div className="w-full flex p-5  gap-3">
+            <div className="w-full flex p-5 gap-3">
               <div className="w-32">
-                <span>* Symptom :</span>
+                <span>* Symptom:</span>
               </div>
-
               <textarea
                 className="w-full h-72 max-h-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
                 name=""
@@ -165,4 +172,6 @@ export default function New() {
       </div>
     </div>
   );
-}
+};
+
+export default New;

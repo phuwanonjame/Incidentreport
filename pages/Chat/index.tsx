@@ -21,13 +21,13 @@ export default function Index() {
   return (
     <div>
       <div className="bg-slate-100 max-h-[800px] h-[800px] overflow-auto mt-5 rounded-md">
-        <div className="h-full">
-          <div className="fixed flex w-[1680px] items-center justify-center bg-slate-800 text-white rounded-t-md">
-            <div className="w-[500px] p-1">
+        <div className="h-full p-2">
+          <div className="  flex w-[1680px] max-md:w-full max-md:flex max-md:items-center max-md:justify-center bg-slate-800 text-white rounded-t-md">
+            <div className="w-[500px] max-md:h-16 max-md:flex max-md:justify-center max-md:items-center max-md:w-full p-1">
               <h1 className="text-1xl text-center">Chat</h1>
             </div>
 
-            <div className="w-full border-l-2 border-gray-800 flex items-center">
+            <div className="w-full max-md:hidden border-l-2  border-gray-800 flex items-center">
               <div className="rounded-full ml-5 p-1">
                 <div>
                   <img
@@ -42,7 +42,7 @@ export default function Index() {
             </div>
           </div>
           <div className="h-full flex justify-center">
-            <div className="w-[500px] mt-14 shadow-lg rounded-bl-md bg-slate-600 p-1">
+            <div className="w-[500px] max-md:mt-0  shadow-lg rounded-bl-md bg-slate-600 p-1">
               <div>
                 <div className="flex cursor-pointer hover:bg-slate-500 justify-center items-center bg-slate-800 text-white rounded-md">
                   <img
@@ -55,7 +55,7 @@ export default function Index() {
                 </div>
               </div>
             </div>
-            <div className="mt-14 flex flex-col overflow-auto w-full border-l-2">
+            <div className=" max-md:hidden flex flex-col overflow-auto w-full border-l-2">
               <div className="h-full">
                 <div className="w-full h-full max-h-[650px]">
                   <div className="w-full h-full max-h-[650px] bg-white rounded-md flex flex-col-reverse overflow-y-auto p-5">
