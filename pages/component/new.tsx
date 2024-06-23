@@ -155,7 +155,7 @@ export default function New() {
               </div>
 
               <textarea
-                className="w-full h-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
+                className="w-full h-72 max-h-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
                 name=""
                 id=""
               />

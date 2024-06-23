@@ -13,7 +13,7 @@ export default function Home() {
     <div className=" ">
       <div className="">
         <div>
-          <h4 className="text-2xl font-bold  ">Dashboard</h4>
+          <h4 className="text-2xl font-bold max-md:ml-5  ">Dashboard</h4>
         </div>
         <div className=" bg-slate-100  max-md:overflow-hidden max-md:max-h-full max-h-[800px] overflow-auto p-5 mt-5 max-md:mt-0 rounded-md ">
           <div className="">
@@ -28,7 +28,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className=" bg-white max-md:w-fit w-72 h-32 border-b-4 border-blue-500 rounded-md shadow-md">
+            <div className=" bg-white max-md:w-full  w-72 h-32 border-b-4 border-blue-500 rounded-md shadow-md">
               <div className="p-5">
                 <span className=" text-gray-500 max-md:text-[12px]  ">Unresolved Incidents:</span>
                 <div className="flex justify-center">
@@ -36,7 +36,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className=" bg-white max-md:w-fit w-72 h-32 border-b-4 border-green-500 rounded-md shadow-md">
+            <div className=" bg-white max-md:w-full  w-72 h-32 border-b-4 border-green-500 rounded-md shadow-md">
               <div className="p-5">
                 <span className=" text-gray-500 max-md:text-[12px] ">Incidents In Progress:</span>
                 <div className="flex justify-center">
