@@ -38,7 +38,7 @@ export default function useIncidentData() {
       axios
         .get("http://localhost:3001/incidentcase")
         .then((response) => {
-          const fetchedData: Data[] = response.data;
+          const fetchedData: Data[] = response.data
           setData(fetchedData);
           cachedData = fetchedData; 
           setLoading(false);
