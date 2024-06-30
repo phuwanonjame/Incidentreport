@@ -38,7 +38,7 @@ export default function useIncidentData() {
       axios
         .get("http://localhost:3001/incidentcase")
         .then((response) => {
-          const fetchedData = response.data;
+          const fetchedData: Data[] = response.data;
           setData(fetchedData);
           cachedData = fetchedData; 
           setLoading(false);
@@ -61,8 +61,7 @@ export default function useIncidentData() {
           incident.Incstatus.toLowerCase().includes(searchTermLower) ||
           (incident.opened && incident.opened.toLowerCase().includes(searchTermLower)) ||
           incident.AssignedTo.toLowerCase().includes(searchTermLower) ||
-          incident.AssignmentGroup.toLowerCase().includes(searchTermLower) ||
-          (typeof incident.opened === 'string' && incident.opened.toLowerCase().includes(searchTermLower))
+          incident.AssignmentGroup.toLowerCase().includes(searchTermLower)
         )
       );
     } else {
