@@ -1,4 +1,4 @@
-import {useState } from 'react';
+import { useState } from 'react';
 import useIncidentData from '../data/useIncidentData';
 import New from '../component/new';
 
@@ -21,12 +21,10 @@ interface Data {
   resolved_at: string;
 }
 
-const Index: React.FC = () => {
- 
-  const {searchTerm,filteredIncidents, data, loading ,handleSearch} = useIncidentData(); // รวม state loading เข้าไปด้วย
+export default function Index() {
+  const { searchTerm, filteredIncidents, data, loading, handleSearch } = useIncidentData(); // รวม state loading เข้าไปด้วย
   const [openInc, setOpenInc] = useState<boolean>(false);
 
-  
   return (
     <>
       {!openInc ? (
@@ -102,6 +100,5 @@ const Index: React.FC = () => {
       )}
     </>
   );
-};
+}
 
-export default Index;
