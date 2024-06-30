@@ -6,7 +6,7 @@ interface NewProps {
   setOpenInc: (value: boolean) => void;
 }
 
-const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
+export default function New({ openInc, setOpenInc }: NewProps) {
   const [Caller, setCaller] = useState("");
   const [User_id, setUser_id] = useState("");
   const [Category, setCategory] = useState("");
@@ -14,6 +14,7 @@ const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
   const [Data, setData] = useState("");
   const [openby, setOpenby] = useState("");
   const [contact, setContact] = useState("");
+
   function NewReport() {
     console.log(Caller);
     console.log(User_id);
@@ -21,6 +22,7 @@ const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
     console.log(Location);
     console.log(Data);
   }
+
   return (
     <div className="max-md:flex max-md:w-full max-md:h-full absolute w-full h-[850px] max-h-[850px]">
       <div className="w-full h-full bg-slate-50">
@@ -213,6 +215,6 @@ const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
       </div>
     </div>
   );
-};
+}
 
-export default New;
+
