@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import {useState } from 'react';
 import useIncidentData from '../data/useIncidentData';
 import New from '../component/new';
 
