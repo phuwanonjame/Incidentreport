@@ -24,14 +24,31 @@ interface PieChartData extends Data {
   value: number;
 }
 
-let cachedData: Data[] | null = null; // Cache variable
+
 
 export default function useIncidentData() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredIncidents, setFilteredIncidents] = useState<Data[]>([]);
+  let [cachedData, setCachedData] = useState<Data[] | null>(null);
   const [data, setData] = useState<Data[]>(cachedData || []);
   const [loading, setLoading] = useState(!cachedData); 
   const [isDataFetched, setIsDataFetched] = useState(false);
+  
+  
+  useEffect(() => {
+    if (cachedData === null) {
+      axios
+        .get("http://localhost:3001/incidentcase")
+        .then((response) => {
+          const fetchedData: Data[] = response.data;
+          setCachedData(fetchedData);
+          console.log("Data loaded successfully", fetchedData);
+        })
+        .catch((error) => {
+          console.error("Error loading data", error);
+        });
+    }
+  }, [cachedData]);
 
   useEffect(() => {
     if (!isDataFetched) {
@@ -51,6 +68,7 @@ export default function useIncidentData() {
         });
     }
   }, [isDataFetched]);
+ 
 
   useEffect(() => {
     if (data.length > 0) {

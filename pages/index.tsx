@@ -4,7 +4,6 @@ import useIncidentData from "./data/useIncidentData";
 
 const Home: React.FC = () => {
   const { data: totalIncidentsData } = useIncidentData();
-
   return (
     <div className="">
       <div>
