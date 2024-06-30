@@ -1,5 +1,5 @@
-// hooks/useIncidentData.ts
-import React, { useState, useEffect } from 'react';
+
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 interface Data {

@@ -1,8 +1,6 @@
-import React from 'react';
-
 
 import PieChart from './component/PieChart';
-import LineChart from './component/Linechart'; // Corrected import path
+import LineChart from './component/Linechart'; 
 import useIncidentData from './data/useIncidentData';
 
 const Home: React.FC = () => {
