@@ -1,31 +1,48 @@
 // components/PieChart.tsx
-import { Pie } from 'react-chartjs-2';
-import { Chart, registerables } from 'chart.js';
+import React from "react";
+import { Pie } from "react-chartjs-2";
+import { Chart, registerables } from "chart.js";
+import useIncidentData from "../data/useIncidentData";
+
+
 Chart.register(...registerables);
 
-interface PieChartData {
-  id: number;
-  name: string;
-  status: string;
-  created_at: string;
-  resolved_at?: string;
-  assignee: string;
-  priority: string;
+interface Data {
+  AssignedTo: string;
+  AssignmentGroup: string;
+  Caller: string;
+  Category: string;
+  ContactNumber: string;
+  Incid: number;
+  Incstatus: string;
+  Userid: number;
+  location: string;
+  opened: string;
+  openedBy: string;
+  summary: string;
+  symptom: string;
+  _id: string;
   resolution_time: number | null;
-  value: number; // Add the value field
+  resolved_at: string;
 }
 
-interface PieChartProps {
-  data: PieChartData[];
+interface PieChartData extends Data {
+  value: number;
 }
 
-export default function PieChart({ data }: PieChartProps) {
-  if (!data) {
-    return null; 
+const PieChart: React.FC = () => {
+  const { pieChartData, loading } = useIncidentData();
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
-  // Aggregate values for incidents with the same name
-  const aggregatedData = data.reduce((acc, incident) => {
-    const existingIncident = acc.find(item => item.name === incident.name);
+
+  if (!pieChartData.length) {
+    return <div>No data available</div>;
+  }
+
+  const aggregatedData = pieChartData.reduce((acc: PieChartData[], incident: PieChartData) => {
+    const existingIncident = acc.find((item: PieChartData) => item.summary === incident.summary);
     if (existingIncident) {
       existingIncident.value += incident.value;
     } else {
@@ -35,15 +52,17 @@ export default function PieChart({ data }: PieChartProps) {
   }, [] as PieChartData[]);
 
   const chartData = {
-    labels: aggregatedData.map(incident => incident.name),
+    labels: aggregatedData.map((incident: PieChartData) => incident.summary),
     datasets: [
       {
-        data: aggregatedData.map(incident => incident.value),
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+        data: aggregatedData.map((incident: PieChartData) => incident.value),
+        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
       },
     ],
   };
 
   return <Pie data={chartData} />;
-}
+};
+
+export default PieChart;

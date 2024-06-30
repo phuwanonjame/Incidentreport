@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { blue } from "@mui/material/colors";
 interface NewProps {
@@ -6,7 +6,24 @@ interface NewProps {
   setOpenInc: (value: boolean) => void;
 }
 
+
+
 const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
+  const [Caller,setCaller]=useState("")
+  const [User_id,setUser_id]=useState("")
+  const [Category,setCategory]=useState("")
+  const [Location,setLocation]=useState("")
+  const [Data,setData]=useState("")
+  const [openby,setOpenby]=useState("")
+  const [contact,setContact]=useState("")
+  function NewReport(){
+  console.log(Caller);
+  console.log(User_id);
+  console.log(Category);
+  console.log(Location);
+  console.log(Data);
+  
+  }
   return (
     <div className="max-md:flex max-md:w-full max-md:h-full absolute w-full h-[850px] max-h-[850px]">
    
@@ -38,7 +55,7 @@ const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
                 <div>
                   <input
                     className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
-                    type="text"
+                    type="text" value={Caller} onChange={(e)=>setCaller(e.target.value)}
                   ></input>
                 </div>
               </div>
@@ -48,28 +65,28 @@ const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
                 </div>
                 <input
                   className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
-                  type="text"
+                  type="text" value={User_id} onChange={(e)=>setUser_id(e.target.value)}
                 ></input>
               </div>
               <div className="flex items-center mt-2 gap-4">
                 <div className="w-32">
                   <span>Category:</span>
                 </div>
-                <select className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none">
+                <select  className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none" onChange={(e)=>setCategory(e.target.value)} >
                   <option value=""></option>
-                  <option value="">Software</option>
-                  <option value="">Hardware</option>
-                  <option value="">IP-Phone</option>
+                  <option value="Software">Software</option>
+                  <option value="Hardware">Hardware</option>
+                  <option value="IP-Phone">IP-Phone</option>
                 </select>
               </div>
               <div className="flex items-center mt-2 gap-4">
                 <div className="w-32">
                   <span>Location:</span>
                 </div>
-                <select className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none">
+                <select className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none" onChange={(e)=>setLocation(e.target.value)}> 
                   <option value=""></option>
-                  <option value="">สำนักงานใหญ่</option>
-                  <option value="">สาขา</option>
+                  <option value="สำนักงานใหญ่">สำนักงานใหญ่</option>
+                  <option value="สาขา">สาขา</option>
                 </select>
               </div>
             </div>
@@ -79,10 +96,12 @@ const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
                   <span>Opened:</span>
                 </div>
                 <input
+                value={Data}
                   className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
                   type="date"
                   name=""
                   id=""
+                  onChange={(e)=>setData(e.target.value)}
                 />
               </div>
               <div className="flex items-center mt-2 gap-4">
@@ -94,6 +113,8 @@ const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
                   type="text"
                   name=""
                   id=""
+                  value={openby}
+                  onChange={(e)=>setOpenby(e.target.value)}
                 />
               </div>
               <div className="flex items-center mt-2 gap-4">
@@ -102,9 +123,11 @@ const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
                 </div>
                 <input
                   className="w-72 rounded-md bg-white border-gray-300 border p-1 outline-none"
-                  type="text"
+                  type="number"
                   name=""
                   id=""
+                  value={contact}
+                  onChange={(e)=>setContact(e.target.value)}
                 />
               </div>
               <div className="flex items-center mt-2 gap-4">
@@ -168,6 +191,7 @@ const New: React.FC<NewProps> = ({ openInc, setOpenInc }) => {
               />
             </div>
           </div>
+          <button onClick={()=>NewReport()}>Save</button>
         </div>
       </div>
     </div>
