@@ -2,7 +2,7 @@ import PieChart from "./component/PieChart";
 import LineChart from "./component/Linechart";
 import useIncidentData from "./data/useIncidentData";
 
-const Home: React.FC = () => {
+export default function Home() {
   const { data: totalIncidentsData } = useIncidentData();
   return (
     <div className="">
@@ -143,4 +143,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+

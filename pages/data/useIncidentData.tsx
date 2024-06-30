@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 interface Data {
   AssignedTo: string;
   AssignmentGroup: string;
   Caller: string;
   Category: string;
-  ContactNumber: string; 
-  Incid: number; 
+  ContactNumber: string;
+  Incid: number;
   Incstatus: string;
   Userid: number;
   location: string;
@@ -24,17 +24,14 @@ interface PieChartData extends Data {
   value: number;
 }
 
-
-
 export default function useIncidentData() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredIncidents, setFilteredIncidents] = useState<Data[]>([]);
   let [cachedData, setCachedData] = useState<Data[] | null>(null);
   const [data, setData] = useState<Data[]>(cachedData || []);
-  const [loading, setLoading] = useState(!cachedData); 
+  const [loading, setLoading] = useState(!cachedData);
   const [isDataFetched, setIsDataFetched] = useState(false);
-  
-  
+
   useEffect(() => {
     if (cachedData === null) {
       axios
@@ -55,9 +52,9 @@ export default function useIncidentData() {
       axios
         .get("http://localhost:3001/incidentcase")
         .then((response) => {
-          const fetchedData: Data[] = response.data
+          const fetchedData: Data[] = response.data;
           setData(fetchedData);
-          cachedData = fetchedData; 
+          cachedData = fetchedData;
           setLoading(false);
           setIsDataFetched(true);
           console.log("Data loaded successfully", fetchedData);
@@ -68,18 +65,19 @@ export default function useIncidentData() {
         });
     }
   }, [isDataFetched]);
- 
 
   useEffect(() => {
     if (data.length > 0) {
       const searchTermLower = searchTerm.toLowerCase();
       setFilteredIncidents(
-        data.filter((incident) => 
-          incident.summary.toLowerCase().includes(searchTermLower) ||
-          incident.Incstatus.toLowerCase().includes(searchTermLower) ||
-          (incident.opened && incident.opened.toLowerCase().includes(searchTermLower)) ||
-          incident.AssignedTo.toLowerCase().includes(searchTermLower) ||
-          incident.AssignmentGroup.toLowerCase().includes(searchTermLower)
+        data.filter(
+          (incident) =>
+            incident.summary.toLowerCase().includes(searchTermLower) ||
+            incident.Incstatus.toLowerCase().includes(searchTermLower) ||
+            (incident.opened &&
+              incident.opened.toLowerCase().includes(searchTermLower)) ||
+            incident.AssignedTo.toLowerCase().includes(searchTermLower) ||
+            incident.AssignmentGroup.toLowerCase().includes(searchTermLower)
         )
       );
     } else {
@@ -93,7 +91,7 @@ export default function useIncidentData() {
 
   const pieChartData: PieChartData[] = data.map((incident) => ({
     ...incident,
-    value: data.filter(i => i.summary === incident.summary).length,
+    value: data.filter((i) => i.summary === incident.summary).length,
   }));
 
   return {
