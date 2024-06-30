@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from './component/Navbar';
-import { LineChartData } from './incidentsData'; // Import only LineChartData as needed
+
+
 import PieChart from './component/PieChart';
 import LineChart from './component/Linechart'; // Corrected import path
 import useIncidentData from './data/useIncidentData';
