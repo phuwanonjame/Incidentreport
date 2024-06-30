@@ -1,9 +1,6 @@
-
-
 import { Pie } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
 import useIncidentData from "../data/useIncidentData";
-
 
 Chart.register(...registerables);
 
@@ -41,15 +38,20 @@ const PieChart: React.FC = () => {
     return <div>No data available</div>;
   }
 
-  const aggregatedData = pieChartData.reduce((acc: PieChartData[], incident: PieChartData) => {
-    const existingIncident = acc.find((item: PieChartData) => item.summary === incident.summary);
-    if (existingIncident) {
-      existingIncident.value += incident.value;
-    } else {
-      acc.push({ ...incident });
-    }
-    return acc;
-  }, [] as PieChartData[]);
+  const aggregatedData = pieChartData.reduce(
+    (acc: PieChartData[], incident: PieChartData) => {
+      const existingIncident = acc.find(
+        (item: PieChartData) => item.summary === incident.summary
+      );
+      if (existingIncident) {
+        existingIncident.value += incident.value;
+      } else {
+        acc.push({ ...incident });
+      }
+      return acc;
+    },
+    [] as PieChartData[]
+  );
 
   const chartData = {
     labels: aggregatedData.map((incident: PieChartData) => incident.summary),

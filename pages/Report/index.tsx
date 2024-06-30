@@ -1,4 +1,3 @@
-
 import useIncidentData from "../data/useIncidentData";
 import PieChart from "../component/PieChart";
 import LineChart from "../component/Linechart"; // Ensure this path is correct
@@ -63,13 +62,17 @@ const Report: React.FC = () => {
         <div className="flex justify-center max-md:grid max-md:gap-5 gap-5">
           <div className="w-3/4">
             <div className="mt-4  line-chart max-md:w-[90vw]  p-2 rounded-md shadow-md bg-white">
-              <h1 className=" text-xl mb-2  rounded-md text-white p-1 bg-blue-600">Team Incident Over Time</h1>
+              <h1 className=" text-xl mb-2  rounded-md text-white p-1 bg-blue-600">
+                Team Incident Over Time
+              </h1>
               <LineChart data={incidents} condition={1} />
             </div>
           </div>
 
           <div className="pie-chart max-md:w-96 bg-white p-2 rounded-md shadow-md mt-4 w-[500px]">
-            <h2 className="text-xl mb-2 text-white p-1 rounded-md bg-blue-600">Team Performance Report</h2>
+            <h2 className="text-xl mb-2 text-white p-1 rounded-md bg-blue-600">
+              Team Performance Report
+            </h2>
             <PieChart />
           </div>
         </div>
