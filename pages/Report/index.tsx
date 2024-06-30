@@ -21,7 +21,7 @@ interface Incident {
   resolved_at: string;
 }
 
-const Report: React.FC = () => {
+export default function Report() {
   const { data: incidents, loading } = useIncidentData();
 
   if (loading) {
@@ -167,4 +167,4 @@ const Report: React.FC = () => {
   );
 };
 
-export default Report;
+
