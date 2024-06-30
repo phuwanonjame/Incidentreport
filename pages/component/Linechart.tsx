@@ -1,7 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
-import useIncidentData from '../data/useIncidentData';
+
 
 Chart.register(...registerables);
 

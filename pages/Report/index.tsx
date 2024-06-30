@@ -1,4 +1,4 @@
-import React from "react";
+
 import useIncidentData from "../data/useIncidentData";
 import PieChart from "../component/PieChart";
 import LineChart from "../component/Linechart"; // Ensure this path is correct

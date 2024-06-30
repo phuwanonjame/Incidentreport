@@ -3,7 +3,6 @@ import Link from "next/link"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MenuIcon from '@mui/icons-material/Menu';
-import { colors } from "@mui/material";
 import { useState } from "react";
 export default function Navbar() {
     const [openham,setOpenham]=useState(false)

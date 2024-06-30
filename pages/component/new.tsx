@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import{ useState } from "react";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { blue } from "@mui/material/colors";
+
 interface NewProps {
   openInc: boolean;
   setOpenInc: (value: boolean) => void;
